@@ -7,7 +7,6 @@
     right: 0;
     
     border-radius: 5% / 50%;
-    pointer-events: none;
 }
 .content::before {
     content: '';
@@ -21,6 +20,7 @@
     background-size: 2px 100%, 100% 3px;
     z-index: 2;
     opacity: 0.8;
+    pointer-events: none;
 }
 .content {
     text-shadow: 0.1841838852799786px 0 1px rgba(0,30,255,0.5), -0.1841838852799786px 0 1px rgba(255,0,80,0.3), 0 0 3px;
