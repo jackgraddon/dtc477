@@ -59,7 +59,29 @@
             <p><strong>Credit:</strong> Photo by <a href="https://unsplash.com/@gronemo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Roméo A.</a> on <a href="https://unsplash.com/photos/people-walking-near-brown-concrete-building-during-daytime-9g11WIv0Ias?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
             </p>
         </section>
-        <section style="background-color: transparent;"></section>
+
+        <script>
+            // Hover effects
+            
+            // Grab all sections
+            const sections = document.querySelectorAll('section');
+
+            // Grab the body element
+            const main = document.querySelector('body');
+
+            // Add event listeners to each section
+            sections.forEach(section => {
+                section.addEventListener('mouseenter', () => {
+                    // Set main background image to the section's background image (id + png)
+                    main.style.backgroundImage = `url(./bg/${section.id}.png)`;
+                });
+                section.addEventListener('mouseleave', () => {
+                    // Reset the main background image to the default
+                    main.style.backgroundImage = `url(./bg/none.png)`;
+                });
+            });
+
+        </script>
     </main>
 </body>
 </html>
