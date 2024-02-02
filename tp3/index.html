@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TP3</title>
+        <style>
+            body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            main {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                margin: 20px auto;
+            }
+            div.row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            div.row>div {
+                border: 1px solid black;
+                border-radius: 7pt;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            a {
+                color: black;
+                padding: 10px;
+                margin: 5px;
+                text-decoration: none;
+                border-radius: 7pt;
+                background-color: lightgray;
+                transition: 150ms ease;
+            }
+            a:hover {
+                color: white;
+                background-color: lightcoral;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <h1>TP3</h1>
+            <div class="row">
+                <div>
+                    <iframe src="tictactoe.html" frameborder="0" width="350px" height="400px"></iframe>
+                    <a href="tictactoe.html">Open Full Page</a>
+                </div>
+                <div>
+                    <iframe src="memory.html" frameborder="0" width="350px" height="400px"></iframe>
+                    <a href="memory.html">Open Full Page</a>
+                </div>
+                <div>
+                    <iframe src="monopoly.html" frameborder="0" width="350px" height="400px"></iframe>
+                    <a href="monopoly.html">Open Full Page</a>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
