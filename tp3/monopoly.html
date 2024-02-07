@@ -14,189 +14,329 @@
             }
             .board {
                 display: grid;
-                grid-template-columns: repeat(11, 1fr);
-                grid-template-rows: repeat(11, 1fr);
-                grid-gap: 5px;
-                background-color: #fff;
-                border: 5px solid #000;
-                padding: 10px;
+                grid-template-columns: repeat(13, 1fr);
+                grid-template-rows: repeat(13, 1fr);
+                aspect-ratio: 1 / 1;
+                grid-gap: 1px;
+                background-color: #D2E5D2;
             }
             .cell {
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                font-size: 20px;
+                text-align: center;
+                font-size: 8pt;
                 font-weight: bold;
                 color: #000;
-                background-color: #fff;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                background-color: #D2E5D2;
                 border: 2px solid #000;
             }
-            .cell:nth-child(odd) {
-                background-color: #f2f2f2;
+            .logo {
+                grid-column: 4 / 11;
+                grid-row: 4 / 11;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                background-color: #D2E5D2;
+                z-index: 1;
             }
-            .cell:nth-child(1) {
-                grid-row: 11 / span 1;
-                grid-column: 1 / span 1;
+            .chance-deck {
+                grid-column: 3 / 5;
+                grid-row: 3 / 5;
+                transform: translate(10%, 10%) rotate(135deg);
+                z-index: 2;
             }
-            .cell:nth-child(2) {
-                grid-row: 11 / span 1;
-                grid-column: 2 / span 1;
+            .community-chest-deck {
+                grid-column: 10 / 12;
+                grid-row: 10 / 12;
+                transform: translate(-10%, -10%) rotate(-45deg);
+                z-index: 2;
             }
-            .cell:nth-child(3) {
-                grid-row: 11 / span 1;
-                grid-column: 3 / span 1;
+            .cell * {
+                margin: 0 0 5px 0;
             }
-            .cell:nth-child(4) {
-                grid-row: 11 / span 1;
-                grid-column: 4 / span 1;
+            .cell .header {
+                width: 100%;
+                height: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 10px;
             }
-            .cell:nth-child(5) {
-                grid-row: 11 / span 1;
-                grid-column: 5 / span 1;
+            .cell .spacer {
+                width: 100%;
+                height: 60%;
             }
-            .cell:nth-child(6) {
-                grid-row: 11 / span 1;
-                grid-column: 6 / span 1;
+            /* Not too proud of what is to follow but it is the most efficient way I could figure this out... */
+            /* Top Row */
+            .cell:nth-child(1) { /* GO */
+                grid-column: 1 / 3;
+                grid-row: 1 / 3;
             }
-            .cell:nth-child(7) {
-                grid-row: 11 / span 1;
-                grid-column: 7 / span 1;
+            .cell:nth-child(2) { /* Mediterranean Avenue */
+                grid-column: 3 / 3;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
             }
-            .cell:nth-child(8) {
-                grid-row: 11 / span 1;
-                grid-column: 8 / span 1;
+            .cell:nth-child(3) { /* Community Chest */
+                grid-column: 4 / 4;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
             }
-            .cell:nth-child(9) {
-                grid-row: 11 / span 1;
-                grid-column: 9 / span 1;
+            .cell:nth-child(4) { /* Baltic Avenue */
+                grid-column: 5 / 5;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
             }
-            .cell:nth-child(10) {
-                grid-row: 11 / span 1;
-                grid-column: 10 / span 1;
+            .cell:nth-child(5) { /* Income Tax */
+                grid-column: 6 / 6;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
             }
+            .cell:nth-child(6) { /* Reading Railroad */
+                grid-column: 7 / 7;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
+            }
+            .cell:nth-child(7) { /* Oriental Avenue */
+                grid-column: 8 / 8;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
+            }
+            .cell:nth-child(8) { /* Chance */
+                grid-column: 9 / 9;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
+            }
+            .cell:nth-child(9) { /* Vermont Avenue */
+                grid-column: 10 / 10;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
+            }
+            .cell:nth-child(10) { /* Connecticut Avenue */
+                grid-column: 11 / 11;
+                grid-row: 1 / 3;
+                transform: rotate(180deg);
+            }
+            /* Right Column */
             .cell:nth-child(11) {
-                grid-row: 11 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 1 / 3;
             }
             .cell:nth-child(12) {
-                grid-row: 10 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 3 / 3;
+                flex-direction: row;
+            }
+            .cell:nth-child(12) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(13) {
-                grid-row: 9 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 4 / 4;
+                flex-direction: row;
+            }
+            .cell:nth-child(13) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(14) {
-                grid-row: 8 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 5 / 5;
+                flex-direction: row;
+            }
+            .cell:nth-child(14) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(15) {
-                grid-row: 7 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 6 / 6;
+                flex-direction: row;
+            }
+            .cell:nth-child(15) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(16) {
-                grid-row: 6 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 7 / 7;
+                flex-direction: row;
+            }
+            .cell:nth-child(16) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(17) {
-                grid-row: 5 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 8 / 8;
+                flex-direction: row;
+            }
+            .cell:nth-child(17) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(18) {
-                grid-row: 4 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 9 / 9;
+                flex-direction: row;
+            }
+            .cell:nth-child(18) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(19) {
-                grid-row: 3 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 10 / 10;
+                flex-direction: row;
+            }
+            .cell:nth-child(19) * {
+                transform: rotate(270deg);
+                margin: 0;
             }
             .cell:nth-child(20) {
-                grid-row: 2 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 11 / 11;
+                flex-direction: row;
             }
+            .cell:nth-child(20) * {
+                transform: rotate(270deg);
+                margin: 0;
+            }
+            /* Bottom row */
             .cell:nth-child(21) {
-                grid-row: 1 / span 1;
-                grid-column: 11 / span 1;
+                grid-column: 12 / 14;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(22) {
-                grid-row: 1 / span 1;
-                grid-column: 10 / span 1;
+                grid-column: 11 / 11;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(23) {
-                grid-row: 1 / span 1;
-                grid-column: 9 / span 1;
+                grid-column: 10 / 10;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(24) {
-                grid-row: 1 / span 1;
-                grid-column: 8 / span 1;
+                grid-column: 9 / 9;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(25) {
-                grid-row: 1 / span 1;
-                grid-column: 7 / span 1;
+                grid-column: 8 / 8;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(26) {
-                grid-row: 1 / span 1;
-                grid-column: 6 / span 1;
+                grid-column: 7 / 7;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(27) {
-                grid-row: 1 / span 1;
-                grid-column: 5 / span 1;
+                grid-column: 6 / 6;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(28) {
-                grid-row: 1 / span 1;
-                grid-column: 4 / span 1;
+                grid-column: 5 / 5;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(29) {
-                grid-row: 1 / span 1;
-                grid-column: 3 / span 1;
+                grid-column: 4 / 4;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(30) {
-                grid-row: 1 / span 1;
-                grid-column: 2 / span 1;
+                grid-column: 3 / 3;
+                grid-row: 12 / 14;
             }
             .cell:nth-child(31) {
-                grid-row: 1 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 12 / 14;
             }
+            /* Left Column */
             .cell:nth-child(32) {
-                grid-row: 2 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 11 / 11;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(32) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(33) {
-                grid-row: 3 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 10 / 10;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(33) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(34) {
-                grid-row: 4 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 9 / 9;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(34) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(35) {
-                grid-row: 5 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 8 / 8;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(35) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(36) {
-                grid-row: 6 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 7 / 7;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(36) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(37) {
-                grid-row: 7 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 6 / 6;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(37) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(38) {
-                grid-row: 8 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 5 / 5;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(38) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(39) {
-                grid-row: 9 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 4 / 4;
+                flex-direction: row-reverse;
+            }
+            .cell:nth-child(39) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
             .cell:nth-child(40) {
-                grid-row: 10 / span 1;
-                grid-column: 1 / span 1;
+                grid-column: 1 / 3;
+                grid-row: 3 / 3;
+                flex-direction: row-reverse;
             }
-            .cell:nth-child(41) {
-                grid-row: 11 / span 1;
-                grid-column: 1 / span 1;
+            .cell:nth-child(40) * {
+                transform: rotate(90deg);
+                margin: 0;
             }
         </style>
     </head>
@@ -204,46 +344,206 @@
         <main>
             <h1>Monopoly Board</h1>
             <div class="board">
-                <div class="cell">GO</div>
-                <div class="cell">Mediterranean Avenue</div>
-                <div class="cell">Community Chest</div>
-                <div class="cell">Baltic Avenue</div>
-                <div class="cell">Income Tax</div>
-                <div class="cell">Reading Railroad</div>
-                <div class="cell">Oriental Avenue</div>
-                <div class="cell">Chance</div>
-                <div class="cell">Vermont Avenue</div>
-                <div class="cell">Connecticut Avenue</div>
-                <div class="cell">Jail</div>
-                <div class="cell">St. Charles Place</div>
-                <div class="cell">Electric Company</div>
-                <div class="cell">States Avenue</div>
-                <div class="cell">Virginia Avenue</div>
-                <div class="cell">Pennsylvania Railroad</div>
-                <div class="cell">St. James Place</div>
-                <div class="cell">Community Chest</div>
-                <div class="cell">Tennessee Avenue</div>
-                <div class="cell">New York Avenue</div>
-                <div class="cell">Free Parking</div>
-                <div class="cell">Kentucky Avenue</div>
-                <div class="cell">Chance</div>
-                <div class="cell">Indiana Avenue</div>
-                <div class="cell">Illinois Avenue</div>
-                <div class="cell">B. & O. Railroad</div>
-                <div class="cell">Atlantic Avenue</div>
-                <div class="cell">Ventnor Avenue</div>
-                <div class="cell">Water Works</div>
-                <div class="cell">Marvin Gardens</div>
-                <div class="cell">Go To Jail</div>
-                <div class="cell">Pacific Avenue</div>
-                <div class="cell">North Carolina Avenue</div>
-                <div class="cell">Community Chest</div>
-                <div class="cell">Pennsylvania Avenue</div>
-                <div class="cell">Short Line</div>
-                <div class="cell">Chance</div>
-                <div class="cell">Park Place</div>
-                <div class="cell">Luxury Tax</div>
-                <div class="cell">Boardwalk</div>
+                <div class="cell" style="font-size: xx-large;">
+                    <p style="transform: rotate(135deg);">GO</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #8C573C;"></div>
+                    <p>Mediterranean Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$40</p>
+                </div>
+                <div class="cell" style="background-color: #4FADE9;">Community Chest</div>
+                <div class="cell">
+                    <div class="header" style="background-color: #8C573C;"></div>
+                    <p>Baltic Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$60</p>
+                </div>
+                <div class="cell">
+                    <p>Income Tax</p>
+                    <div class="spacer"></div>
+                    <p>$200</p>
+                </div>
+                <div class="cell">
+                    <p>Reading Railroad</p>
+                    <div class="spacer"></div>
+                    <p>$200</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #B5DEF7;"></div>
+                    <p>Oriental Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$100</p>
+                </div>
+                <div class="cell" style="background-color: #CA2D8A;">Chance</div>
+                <div class="cell">
+                    <div class="header" style="background-color: #B5DEF7;"></div>
+                    <p>Vermont Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$100</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #B5DEF7;"></div>
+                    <p>Connecticut Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$120</p>
+                </div>
+                <div class="cell" style="font-size: xx-large; background-color: #E9993E;">
+                    <p style="transform: rotate(225deg);">Jail</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #C84893;"></div>
+                    <p>St. Charles Place</p>
+                    <div class="spacer"></div>
+                    <p>$140</p>
+                </div>
+                <div class="cell">
+                    <p>Electric Company</p>
+                    <div class="spacer"></div>
+                    <p>$150</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #C84893;"></div>
+                    <p>States Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$140</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #C84893;"></div>
+                    <p>Virginia Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$160</p>
+                </div>
+                <div class="cell">
+                    <p>Pennsylvania Railroad</p>
+                    <div class="spacer"></div>
+                    <p>$200</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #E9993E;"></div>
+                    <p>St. James Place</p>
+                    <div class="spacer"></div>
+                    <p>$180</p>
+                </div>
+                <div class="cell" style="background-color: #4FADE9;">
+                    <p>Community<br>Chest</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #E9993E;"></div>
+                    <p>Tennessee Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$180</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #E9993E;"></div>
+                    <p>New York Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$200</p>
+                </div>
+                <div class="cell" style="font-size: xx-large; background-color: #E73831;">
+                    <p style="transform: rotate(315deg);">Free Parking</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #DA3732;"></div>
+                    <p>Kentucky Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$220</p>
+                </div>
+                <div class="cell" style="background-color: #CA2D8A;">Chance</div>
+                <div class="cell">
+                    <div class="header" style="background-color: #DA3732;"></div>
+                    <p>Indiana Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$220</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #DA3732;"></div>
+                    <p>Illinois Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$240</p>
+                </div>
+                <div class="cell">
+                    <p>B. & O. Railroad</p>
+                    <div class="spacer"></div>
+                    <p>$200</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #FCF250;"></div>
+                    <p>Atlantic Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$260</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #FCF250;"></div>
+                    <p>Ventnor Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$260</p>
+                </div>
+                <div class="cell">
+                    <p>Water Works</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #FCF250;"></div>
+                    <p>Marvin Gardens</p>
+                    <div class="spacer"></div>
+                    <p>$280</p>
+                </div>
+                <div class="cell" style="font-size: xx-large; background-color: #306FB9;">
+                    <p style="transform: rotate(45deg);">Go to Jail</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #54AE65;"></div>
+                    <p>Pacific Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$300</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #54AE65;"></div>
+                    <p>North Carolina Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$300</p>
+                </div>
+                <div class="cell" style="background-color: #4FADE9;">
+                    <p>Community<br>Chest</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #54AE65;"></div>
+                    <p>Pennsylvania Avenue</p>
+                    <div class="spacer"></div>
+                    <p>$320</p>
+                </div>
+                <div class="cell">
+                    <p>Short Line</p>
+                </div>
+                <div class="cell" style="background-color: #CA2D8A;">
+                    <p>Change</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #3070B5;"></div>
+                    <p>Park Place</p>
+                    <div class="spacer"></div>
+                    <p>$350</p>
+                </div>
+                <div class="cell">
+                    <p>Luxury Tax</p>
+                </div>
+                <div class="cell">
+                    <div class="header" style="background-color: #3070B5;"></div>
+                    <p>Boardwalk</p>
+                    <div class="spacer"></div>
+                    <p>$400</p>
+                </div>
+                
+                <div class="logo">
+                    <img src="./monopoly-logo.png" alt="Monopoly Logo" width="100%">
+                </div>
+                <div class="chance-deck">
+                    <img src="./monopoly-chance.png" alt="Monopoly Chance" width="100%">
+                </div>
+                <div class="community-chest-deck">
+                    <img src="./monopoly-chest.png" alt="Monopoly Community Chest" width="100%">
+                </div>
             </div>
         </main>
     </body>
