@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <!-- Tic Tac Toe Game Styles -->
+        <link rel="stylesheet" href="./index.css" />
+    </head>
+
+    <body>
+        <main>
+            <h1 id="game-title"></h1>
+            <h2 id="game-status"></h2>
+            <!-- Tic Tac Toe Game Board -->
+            <table id="gameboard">
+                <tr>
+                    <td id="0"></td>
+                    <td id="1"></td>
+                    <td id="2"></td>
+                </tr>
+                <tr>
+                    <td id="3"></td>
+                    <td id="4"></td>
+                    <td id="5"></td>
+                </tr>
+                <tr>
+                    <td id="6"></td>
+                    <td id="7"></td>
+                    <td id="8"></td>
+                </tr>
+            </table>
+            <button onclick="game.setup()">Reset Game</button>
+        </main>
+    </body>
+
+    <!-- Tic Tac Toe Game Script -->
+    <script src="./index.js"></script>
+</html>

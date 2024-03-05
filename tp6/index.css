@@ -1,0 +1,77 @@
+/* Body styling */
+body {
+    background: var(--background-image), var(--background-color);
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+}
+
+/* Turn-dependant cursor styling */
+.x-turn {
+    cursor: url("cursors/x.svg"), url("cursors/x.png"), cell;
+}
+.o-turn {
+    cursor: url("cursors/o.svg"), url("cursors/o.png"), not-allowed;
+}
+
+/* Turn dependant background styling */
+body:has(.x-turn) {
+    --background-color: #e0e0f0;
+    --background-image: url("cursors/x.svg") -500% 20% / 90% no-repeat;
+}
+body:has(.o-turn) {
+    --background-color: #f0e0e0;
+    --background-image: url("cursors/o.svg") 500% 20% / 90% no-repeat;
+}
+
+/* Center align gameboard */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Gameboard */
+table {
+    border-collapse: collapse;
+    position: relative;
+}
+table::after {
+    content: "";
+    border: 5px solid var(--background-color);
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+td {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 50px;
+}
+
+/* Button */
+button {
+    border-radius: 7pt;
+    border: 1px solid black;
+    padding: 0.5rem 0.7rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+button:hover {
+    background-color: whitesmoke;
+}
