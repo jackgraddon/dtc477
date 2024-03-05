@@ -1,5 +1,8 @@
 /* Body styling */
 body {
+    --background-color: #e0e0e0;
+    --background-image: none;
+
     background: var(--background-image), var(--background-color);
     font-family:
         system-ui,
@@ -15,14 +18,6 @@ body {
         sans-serif;
 }
 
-/* Turn-dependant cursor styling */
-.x-turn {
-    cursor: url("cursors/x.svg"), url("cursors/x.png"), cell;
-}
-.o-turn {
-    cursor: url("cursors/o.svg"), url("cursors/o.png"), not-allowed;
-}
-
 /* Turn dependant background styling */
 body:has(.x-turn) {
     --background-color: #e0e0f0;
@@ -30,7 +25,16 @@ body:has(.x-turn) {
 }
 body:has(.o-turn) {
     --background-color: #f0e0e0;
+    /* If desktop */
     --background-image: url("cursors/o.svg") 500% 20% / 90% no-repeat;
+}
+
+/* Turn-dependant cursor styling */
+.x-turn {
+    cursor: url("cursors/x.svg"), url("cursors/x.png"), cell;
+}
+.o-turn {
+    cursor: url("cursors/o.svg"), url("cursors/o.png"), not-allowed;
 }
 
 /* Center align gameboard */
@@ -45,6 +49,7 @@ table {
     border-collapse: collapse;
     position: relative;
 }
+
 table::after {
     content: "";
     border: 5px solid var(--background-color);
@@ -62,6 +67,13 @@ td {
     height: 100px;
     text-align: center;
     font-size: 50px;
+}
+/* If mobile */
+@media (max-width: 1000px) {
+    body {
+        margin-top: 20vh;
+        transform: scale(2);
+    }
 }
 
 /* Button */

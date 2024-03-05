@@ -72,10 +72,12 @@ const game = {
         game.status.textContent = "⭕ wins!";
         break;
       case "d": // If it's a draw
+        game.gameboard.classList.remove("x-turn", "o-turn");
         game.status.textContent = "It's a draw!";
         break;
       default: // If the game is still ongoing
         game.nextTurn();
+        break;
     }
   },
 
