@@ -1,0 +1,222 @@
+body {
+    /* Reset */
+    margin: 0;
+    padding: 0;
+
+    /* Use System Font */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: no-repeat url("background/day.jpg") center / cover;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: no-repeat url("background/night.jpg") center / cover;
+    }
+    main {
+        filter: invert(1) hue-rotate(180deg);
+        backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
+    }
+}
+
+/* Text reset */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Loading popup */
+div#loading {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-size: xx-large;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form * {
+    transition: 300ms ease all;
+}
+
+form input {
+    padding: 0.5rem;
+    background-color: rgba(245, 245, 245, 1);
+    border: 2px rgba(130, 160, 255, 0) solid;
+    outline: none;
+    border-radius: 7pt;
+}
+form input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(130, 160, 255, 0.8);
+}
+form button {
+    padding: 0.5rem;
+    background-color: rgba(245, 245, 245, 1);
+    border: 0px transparent;
+    outline: none;
+    border-radius: 7pt;
+    cursor: pointer;
+}
+form button:hover {
+    background-color: rgb(130, 160, 255, 0.8);
+    color: white;
+}
+
+/* Main window */
+main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+
+    /* Add subtle blur to the background */
+    background: rgba(245, 245, 245, 0.6);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+
+main div.sidebar {
+    flex: 1;
+    height: calc(100%);
+    max-width: 350px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+div.sidebar h1 {
+    margin: 0;
+    padding: 0.5rem 1rem 0 0;
+    font-size: 3rem;
+}
+
+*.bottom {
+    margin-top: auto;
+}
+
+div.sidebar div.card {
+    width: calc(100% - 1rem);
+    background: rgba(235, 235, 235, 0.8);
+    border-radius: 7pt;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+div.sidebar div.card span {
+    font-weight: bold;
+}
+
+
+main div.content {
+    flex: 4;
+    width: 100%;
+    height: calc(100% - 2rem);
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 7pt;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    background: rgba(235, 235, 235, 0.8);
+}
+
+div.content h2 {
+    margin: 0;
+    padding: 0 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+div.content div.content-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+div.content div.card {
+    background: white;
+    border-radius: 7pt;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+div.content div.card div#currentConditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+div.content div.card div#currentConditions img {
+    width: 100px;
+    height: 100px;
+    margin-right: 0.5rem;
+}
+
+div.content div.card #temp {
+    font-size: 3rem;
+    font-weight: bold;
+}
+div.content div.card #feelslike {
+    font-weight: bold;
+}
+
+div.content div.card div.moreInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    /* height: 100%; */
+}
+div.content div.card div.moreInfo div {
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    background-color: rgba(200, 200, 200, 1);
+    padding: 0.5rem;
+    border-radius: 7pt;
+}
+div.content div.card div.moreInfo div span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+div.content div.card div.moreInfo div span#windDir {
+    display: inline-block;
+}
