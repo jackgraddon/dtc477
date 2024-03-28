@@ -1,0 +1,40 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+div.board {
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    width: 300px;
+    height: 300px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+div.board>div.card {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30pt;
+    cursor: pointer;
+    border-radius: 7pt;
+}
+div.board>div.card  span {
+    display: none;
+}
+div.board>div.card[data-revealed="true"] {
+    background-color: rgb(200, 200, 200);
+}
+div.board>div.card[data-revealed="match"] {
+    background-color: rgb(180, 241, 195);
+}
+div.board>div.card[data-revealed="true"] span, div.board>div.card[data-revealed="match"] span{
+    display: block;
+}
