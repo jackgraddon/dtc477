@@ -129,8 +129,8 @@ function updatePageData() {
   // Visibility
   document.querySelector("#visibility").textContent = sessionData.weather.current.vis_miles + "mi";
 
-  // UV Index
-  document.querySelector("#uvIndex").textContent = sessionData.weather.current.uv;
+  // Cloud Coverage
+  document.querySelector("#cloudCover").textContent = sessionData.weather.current.cloud + "%";
 
   // Display the current weather icon
   document.querySelector("#weatherIcon").src = sessionData.weather.current.condition.icon.replace("64x64", "128x128");
