@@ -10,21 +10,16 @@ body {
     overflow: hidden;
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background: no-repeat url("background/day.jpg") center / cover;
-    }
+body.light {
+    background: no-repeat url("background/day.jpg") center / cover;
 }
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background: no-repeat url("background/night.jpg") center / cover;
-    }
-    main {
-        filter: invert(1) hue-rotate(180deg);
-        backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
-        -webkit-backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
-    }
+body.dark {
+    background: no-repeat url("background/night.jpg") center / cover;
+}
+body.dark main {
+    filter: invert(1) hue-rotate(180deg);
+    backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
 }
 
 /* Text reset */

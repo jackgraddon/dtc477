@@ -51,6 +51,7 @@ function updateTime() {
   document.querySelector("#time").textContent = sessionData.time;
 }
 
+
 // Get the weather based on the member's location
 async function getWeather(city) {
   const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=4`;
@@ -73,6 +74,18 @@ async function getWeather(city) {
     console.error(error);
   }
 }
+
+// Use the sessionData to detect the theme
+function detectTheme() {
+  let isDay = sessionData.weather.current.is_day; // an integer, 1 or 0
+  // Set the theme based on the value of isDay
+  if (isDay == 1) {
+    document.querySelector("body").classList.add("light");
+  } else {
+    document.querySelector("body").classList.add("dark");
+  }
+}
+
 
 function epochToLocalTime(epoch) {
   // Create a new Date object from the epoch time
@@ -206,6 +219,7 @@ setInterval(updateTime, 1000);
 // When the page is fully loaded, get the member's IP address and location
 document.addEventListener("DOMContentLoaded", async function() {
   await getIP();
+  detectTheme();
   updatePageData();
   toggleLoadPopup();
 });
