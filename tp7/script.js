@@ -53,7 +53,7 @@ function updateTime() {
 
 // Get the weather based on the member's location
 async function getWeather(city) {
-  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=7`;
+  const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${city}&days=4`;
   const options = {
     method: 'GET',
     headers: {
@@ -144,11 +144,40 @@ function updatePageData() {
   // Update the weekly forecast
   const forecast = document.querySelector("#weeklyForecast");
   forecast.querySelectorAll(".day").forEach((day, index) => {
-    const forecastData = sessionData.weather.forecast.forecastday[index + 1];
-    day.querySelectorAll("p")[0].textContent = forecastData.date;
+    const forecastData = sessionData.weather.forecast.forecastday[index];
+    console.log(forecastData);
+    // Update the day of the week, date, icon, and temperatures
+    day.querySelectorAll("p")[0].textContent = forecastData.date.replace("-", "/").replace("-", "/").split("/").slice(1).join("/");
     day.querySelector("img").src = forecastData.day.condition.icon.replace("64x64", "128x128");
     day.querySelectorAll("p")[1].textContent = sessionData.settings.tempUnit === "C" ? forecastData.day.maxtemp_c + '\u00B0C / ' + forecastData.day.mintemp_c + '\u00B0C' : forecastData.day.maxtemp_f + '\u00B0F / ' + forecastData.day.mintemp_f + '\u00B0F';
   });
+
+  // Update the hourly forecast
+  const hourlyForecast = document.querySelector("#hourlyForecast");
+  sessionData.weather.forecast.forecastday[0].hour.forEach((hour, index) => {
+    // Create the HTML structure
+    const hourDiv = document.createElement("div");
+    hourDiv.classList.add("hour");
+
+    const p1 = document.createElement("p");
+    p1.textContent = epochToLocalTime(hour.time_epoch);
+    hourDiv.appendChild(p1);
+
+    const divContainer = document.createElement("div");
+    const img = document.createElement("img");
+    img.src = hour.condition.icon;
+    img.alt = hour.condition.text;
+    divContainer.appendChild(img);
+
+    const p2 = document.createElement("p");
+    p2.textContent = sessionData.settings.tempUnit === "C" ? hour.temp_c + '\u00B0C' : hour.temp_f + '\u00B0F';
+    divContainer.appendChild(p2);
+    hourDiv.appendChild(divContainer);
+
+    // Append the hourDiv to the desired container (e.g., hourlyForecast)
+    hourlyForecast.appendChild(hourDiv);
+  })
+
 }
 
 function toggleLoadPopup() {
@@ -181,7 +210,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   toggleLoadPopup();
 });
 
-// If the member wants to change the locaiton
+// If the member wants to change the location
 document.querySelector("#locationForm").addEventListener("submit", async function(event) {
   // Prevent the form from submitting normally
   event.preventDefault();
