@@ -1,0 +1,355 @@
+body {
+    /* Reset */
+    margin: 0;
+    padding: 0;
+
+    /* Use System Font */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* Overflow */
+    overflow: hidden;
+}
+@media screen and (max-width: 833px) {
+    body {
+        overflow: auto;
+    }
+    body.light {
+        background: rgba(226, 245, 255) !important;
+    }
+    body.dark {
+        background: rgb(4, 2, 27) !important;
+    }
+}
+
+body.light {
+    background: no-repeat url("background/day.jpg") center / cover;
+}
+body.dark {
+    background: no-repeat url("background/night.jpg") center / cover;
+}
+body.dark main {
+    filter: invert(1) hue-rotate(180deg);
+    backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(1.2) invert(1) hue-rotate(180deg) !important;
+}
+
+/* Text reset */
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Subtle animation */
+* {
+    transition: 300ms ease background-color, 300ms ease color, 300ms ease border-color, 300ms ease box-shadow, 300ms ease transform;
+}
+
+/* Loading popup */
+div#loading, div#changeLocation {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-size: xx-large;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+form input {
+    padding: 0.5rem;
+    background-color: rgba(245, 245, 245, 1);
+    border: 2px rgba(130, 160, 255, 0) solid;
+    outline: none;
+    border-radius: 7pt;
+}
+form input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(130, 160, 255, 0.8);
+}
+#autocompleteResults {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: rgba(245, 245, 245, 1);
+    border-radius: 7pt;
+    display: none; /* Initially hidden */
+}
+
+#autocompleteResults li {
+    font-size: medium;
+    padding: 5px;
+    cursor: pointer;
+    margin: 0 0 3px 0;
+    border-radius: 7pt;
+    color: #000;
+    background-color: rgba(200, 200, 200, 0.5);
+    border: 1px solid rgba(130, 160, 255, 0.8);
+}
+
+#autocompleteResults li:hover {
+    background-color: #eee;
+}
+  
+
+button {
+    padding: 0.5rem;
+    background-color: rgba(245, 245, 245, 1);
+    border: 0px transparent;
+    outline: none;
+    border-radius: 7pt;
+    cursor: pointer;
+}
+button:hover {
+    background-color: rgb(130, 160, 255, 0.8);
+    color: white;
+}
+
+/* Main window */
+main {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    /* Add subtle blur to the background */
+    background: rgba(245, 245, 245, 0.6);
+    backdrop-filter: blur(10px) saturate(1.2);
+    -webkit-backdrop-filter: blur(10px) saturate(1.2);
+}
+
+@media screen and (max-width: 833px) {
+    main {
+        flex-direction: column;
+        background: transparent;
+    }
+}
+
+main div.sidebar {
+    flex: 1;
+    height: calc(100%);
+    max-width: 350px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+div.sidebar h1 {
+    margin: 0;
+    padding: 0.5rem 1rem 0 0;
+    font-size: 3rem;
+}
+
+*.bottom {
+    margin-top: auto;
+}
+
+div.sidebar div.card {
+    width: calc(100% - 1rem);
+    background: rgba(235, 235, 235, 0.8);
+    border-radius: 7pt;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+div.sidebar div.card span {
+    font-weight: bold;
+}
+
+
+main div.content {
+    flex: 4;
+    width: auto; /* Adjusted to maintain aspect ratio */
+    height: auto; /* Adjusted to maintain aspect ratio */
+    max-height: calc(100vh - 2rem); /* Caps the height to the viewport height */
+
+    aspect-ratio: 4/3; /* Maintains the aspect ratio */
+
+    margin: 0 0.5rem 0.5rem 0;
+    padding: 0.5rem;
+
+    border-radius: 7pt;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    background: rgba(235, 235, 235, 0.8);
+}
+@media screen and (max-width: 833px) {
+    main div.content {
+        width: calc(100% - 1rem);
+        margin: 0;
+        background-color: transparent;
+        height: 100%;
+        aspect-ratio: unset;
+    }
+}
+
+
+div.content h2 {
+    margin: 0;
+    padding: 0 0 0.5rem 0;
+    font-size: 2rem;
+}
+
+div.content img#randomDog {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 7pt;
+}
+
+div.content div.content-grid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+@media screen and (max-width: 833px) {
+    div.content div.content-grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+div.content div.card {
+    background: white;
+    border-radius: 7pt;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+div.content div.card div.card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    background-color: rgba(200, 200, 200, 1);
+    padding: 0.5rem;
+    border-radius: 7pt;
+}
+
+div.content div.card div#currentConditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+div.content div.card div#currentConditions img {
+    width: 100px;
+    height: 100px;
+    margin-right: 0.5rem;
+}
+
+div.content div.card #temp {
+    font-size: 3rem;
+    font-weight: bold;
+}
+div.content div.card #feelslike {
+    font-weight: bold;
+}
+
+div.content div.card div.moreInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    /* height: 100%; */
+}
+div.content div.card div.moreInfo div {
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    background-color: rgba(200, 200, 200, 1);
+    padding: 0.5rem;
+    border-radius: 7pt;
+}
+div.content div.card div.moreInfo div span {
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+div.content div.card div.moreInfo div span#windDir {
+    display: inline-block;
+    fill: black;
+}
+
+div.content div.card div#weeklyForecast {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+div.content div.card div#weeklyForecast div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    background-color: rgba(200, 200, 200, 1);
+    padding: 0.5rem;
+    border-radius: 7pt;
+}
+
+div.content div.card div#weeklyForecast div img {
+    width: 70px;
+    height: 70px;
+    padding-bottom: 0.25rem;
+}
+
+div.content div.card div#weeklyForecast div div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+div.content div.card div#hourlyForecast {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+div.content div.card div#hourlyForecast div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(200, 200, 200, 1);
+    padding: 0.5rem;
+    border-radius: 7pt;
+    height: calc(100% - 1rem);
+}

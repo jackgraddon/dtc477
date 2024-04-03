@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- meta tags and title -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App (TP7)</title>
+
+    <link rel="stylesheet" href="./styles.css" media="all" />
+    <style>
+        /* in-file CSS here */
+    </style>
+
+    <!-- Weather app logic -->
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div id="loading">
+        Loading...
+    </div>
+    <div id="changeLocation" style="display: none;">
+        <form id="locationForm">
+            <p>Want to check a different location?</p>
+            <input type="text" id="locationInput" placeholder="Enter a location" autocomplete="off"/>
+            <ul id="autocompleteResults"></ul>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <main>
+        <div class="sidebar">
+            <h1>Hello!</h1>
+            <p class="bottom">Last updated at <span id="lastUpdatedTime"></span></p>
+            <p>Made with &#10084 by Jack Graddon</p>
+        </div>
+        <div class="content">
+            <!-- <h2>Weather Details</h2> -->
+            <div class="content-grid">
+                <div class="card" id="card-1">
+                    <!-- <h3>Current Weather</h3> -->
+                    <div id="currentConditions">
+                        <img id="weatherIcon">
+                        <div id="temperature">
+                            <p><span id="temp"></span></p>
+                            <p>Feels Like <span id="feelsLike"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="moreInfo">
+                        <div style="width: 100%;">
+                            <p id="currentDescription">right now.</p> 
+                        </div>
+                        <div>
+                            <p>Humidity</p>
+                            <span id="humidity"></span>
+                        </div>
+                        <div>
+                            <p>Visibility</p>
+                            <span id="visibility"></span>
+                        </div>
+                        <div>
+                            <p>Cloud Coverage</p>
+                            <span id="cloudCover"></span>
+                        </div>
+                        <div>
+                            <p>Wind</p>
+                            <p><span id="wind"></span> <span id="windDir"><svg width="14" height="14" viewBox="0 0 10 14"><path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black"></path></svg></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" id="card-2">
+                    <div class="card">
+                        <p>
+                            It's currently <span id="time">Loading...</span> in <span id="location">Loading...</span>.
+                        </p>
+                        <p>
+                            <span id="conditionDay">Loading...</span> today, with a high of <span id="high">Loading...</span> and a low of <span id="low">Loading...</span>.
+                        </p>
+                        <p>
+                            Hope you are having a great day!
+                        </p>
+                    </div>
+                    <!-- Add a random image of a puppy dog -->
+                    <img id="randomDog" src="" alt="A random image of a puppy dog"/>
+                    <button class="bottom" id="changeLocationButton">Change Location</button>
+                </div>
+                <div class="card" style="grid-column: 1/3;" id="card-3">
+                    <h3>By The Hour</h3>
+                    <div id="hourlyForecast">
+                    </div>
+                </div>
+                <div class="card" style="grid-column: 3; grid-row: 1/3;" id="card-4">
+                    <h3>Looking Ahead</h3>
+                    <!-- 7 day weekly forecast -->
+                    <div id="weeklyForecast">
+                        <div class="day">
+                            <p></p>
+                            <div>
+                                <img src="" alt="">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <p></p>
+                            <div>
+                                <img src="" alt="">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="day">
+                            <p></p>
+                            <div>
+                                <img src="" alt="">
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
