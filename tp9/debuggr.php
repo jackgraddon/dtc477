@@ -57,38 +57,38 @@ $quotations = array();
 
 // set up first quote with second dimensions on the array
 $quotations[0] = array();
-$quotations[0][&quot;text&quot;] = &quot;Thinking about design is hard, but not thinking about it can be disastrous.&quot;;
-$quotations[0][&quot;attribute&quot;] = &quot;Ralph Caplan&quot;;
-$quotations[0][&quot;backgroundColor&quot;] = &quot;#0000aa&quot;;
-$quotations[0][&quot;textColor&quot;] = &quot;white&quot;;
+$quotations[0]["text"] = "A great idea solves multiple problems at the same time.";
+$quotations[0]["attribute"] = "Shigeru Miyamoto";
+$quotations[0]["backgroundColor"] = "#59CD90";
+$quotations[0]["textColor"] = "#ffffff";
 
 // set up next quote with second dimensions on the array
 $quotations[1] = array();
-$quotations[1][&quot;text&quot;] = &quot;Design is intelligence made visible.&quot;;
-$quotations[1][&quot;attribute&quot;] = &quot;Alina Wheeler&quot;;
-$quotations[1][&quot;backgroundColor&quot;] = &quot;#aa0000&quot;;
-$quotations[1][&quot;textColor&quot;] = &quot;white&quot;;
+$quotations[1]["text"] = "The only way to do great work is to love what you do.";
+$quotations[1]["attribute"] = "Steve Jobs";
+$quotations[1]["backgroundColor"] = "#258EA6";
+$quotations[1]["textColor"] = "#ffffff";
 
 // set up next quote with second dimensions on the array
 $quotations[2] = array();
-$quotations[2][&quot;text&quot;] = &quot;Design is the intermediary between information and understanding.&quot;;
-$quotations[2][&quot;attribute&quot;] = &quot;Hans Hofmann&quot;;
-$quotations[2][&quot;backgroundColor&quot;] = &quot;#88cc88&quot;;
-$quotations[2][&quot;textColor&quot;] = &quot;#003300&quot;;
+$quotations[2]["text"] = "Video games are bad for you? That's what they said about rock-n-roll.";
+$quotations[2]["attribute"] = "Shigeru Miyamoto";
+$quotations[2]["backgroundColor"] = "#261447";
+$quotations[2]["textColor"] = "#ffffff";
 
 // set up next quote with second dimensions on the array
 $quotations[3] = array();
-$quotations[3][&quot;text&quot;] = &quot;The value of art is in the observer. When you find out what you like, you’re really finding out about yourself.&quot;;
-$quotations[3][&quot;attribute&quot;] = &quot;Agnes Martin&quot;;
-$quotations[3][&quot;backgroundColor&quot;] = &quot;#bbb&quot;;
-$quotations[3][&quot;textColor&quot;] = &quot;#555&quot;;
+$quotations[3]["text"] = "Inside every adult is the heart of a child. We just gradually convince ourselves that we have to act more like adults.";
+$quotations[3]["attribute"] = "Shigeru Miyamoto";
+$quotations[3]["backgroundColor"] = "#FF3864";
+$quotations[3]["textColor"] = "#ffffff";
 
 // set up next quote with second dimensions on the array
 $quotations[4] = array();
-$quotations[4][&quot;text&quot;] = &quot;It&#039;s through mistakes that you actually can grow. You have to get bad in order to get good.&quot;;
-$quotations[4][&quot;attribute&quot;] = &quot;Paula Scher&quot;;
-$quotations[4][&quot;backgroundColor&quot;] = &quot;#aa00aa&quot;;
-$quotations[4][&quot;textColor&quot;] = &quot;#eee&quot;;
+$quotations[4]["text"] = "Programming is not about what you know, it's about what you can figure out.";
+$quotations[4]["attribute"] = "Microsoft Copilot";
+$quotations[4]["backgroundColor"] = "#F39C6B";
+$quotations[4]["textColor"] = "#ffffff";
 
 
 // look for a number passed in the URL and, if present, convert it to an integer value
