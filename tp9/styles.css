@@ -1,0 +1,23 @@
+/* CSS for PHP example */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* body defaults, including colors and fonts */
+body {
+	background-color: #ccc; 
+	color: #333; 
+	font-family: "Bitter", serif;
+	font-optical-sizing: auto; 
+	padding: 3rem 8rem 0 3rem;
+	transition: background-color 1s, color 1s; /* applies to the AJAX version, which dynamically changes the colors */
+}
+
+h1 {
+	font-weight: normal;
+	font-size: 7rem;
+	word-spacing: 1rem;
+}
+
+p {
+	font-style: italic;
+}
