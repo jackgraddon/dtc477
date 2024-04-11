@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,12 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Cache-Control" content="no-store" />
 	<link rel="icon" type="image/png" href="/examples/php-example/debuggr.php?mode=favicon" />
-	<title>Debuggr: random-quote-api.php by Tor</title>
+	<title>Debuggr: index.php by Tor</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js" integrity="sha512-s+tOYYcC3Jybgr9mVsdAxsRYlGNq4mlAurOrfNuGMQ/SCofNPu92tjE7YRZCsdEtWL1yGkqk15fU/ark206YTg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>	<script>
 		
 		// set initial variables from PHP for use with the externalized JavaScript
 		urlToSelf = "/examples/php-example/debuggr.php";
-		baseFile = "random-quote-api.php";
+		baseFile = "index.php";
 		basenameFile = "debuggr.php";
 		lineNumbersOn = true;
 		colNumbersOn = true;
@@ -29,7 +30,7 @@
 <body class="isLoading linesOn darkMode">
 	<div id="nav">
 		<ul id='fileNav'><li><span id='fileIcon'>&#9776;</span>&nbsp;<ul><li><a class='' href='javascript:checkPulse(true);'>Reload File</a></li><li><a onclick='tidyCode()'>Reload and Tidy (beta)</a></li><li><a onclick='window.open(baseFile);'>Execute File</a></li><li><a onclick='downloadFile()'>Download File</a></li><li><a onclick='copyShare()'>Copy Shareable Link</a></li><li><a onclick='selectCode()'>Select All Text</a></li><li><a onclick='lineJumper()'>Go to Line...</a><li class='menuLine'><a onclick='openFile();'>Open File/URL...</a></li></ul></li></ul>		<div id="filenameRef">
-			<span onclick="openFile();">random-quote-api.php</span> 
+			<span onclick="openFile();">index.php</span> 
 			<a class="uicon" title="Reload file" onclick="checkPulse(true);">&#8635;</a>
 			<span id="statusMsg"></span>
 		</div>
@@ -49,72 +50,125 @@
 		<div id="codeCols"></div>
 		<pre>&lt;?
 
-// randomly output one of five quotes as JSON
-
-// secret password key to enable JSON output (see end of code)
-$secretKey = &quot;yesplease&quot;;
+// sample PHP to randomly output one of five quotes
 
 // set up main quotations array
 $quotations = array();
 
 // set up first quote with second dimensions on the array
 $quotations[0] = array();
-$quotations[0]["text"] = "The only way to do great work is to love what you do.";
-$quotations[0]["attribute"] = "Steve Jobs";
-$quotations[0]["backgroundColor"] = "#0000aa";
-$quotations[0]["textColor"] = "white";
+$quotations[0][&quot;text&quot;] = &quot;Thinking about design is hard, but not thinking about it can be disastrous.&quot;;
+$quotations[0][&quot;attribute&quot;] = &quot;Ralph Caplan&quot;;
+$quotations[0][&quot;backgroundColor&quot;] = &quot;#0000aa&quot;;
+$quotations[0][&quot;textColor&quot;] = &quot;white&quot;;
 
 // set up next quote with second dimensions on the array
 $quotations[1] = array();
-$quotations[1]["text"] = "Success is not the key to happiness. Happiness is the key to success.";
-$quotations[1]["attribute"] = "Albert Schweitzer";
-$quotations[1]["backgroundColor"] = "#aa0000";
-$quotations[1]["textColor"] = "white";
+$quotations[1][&quot;text&quot;] = &quot;Design is intelligence made visible.&quot;;
+$quotations[1][&quot;attribute&quot;] = &quot;Alina Wheeler&quot;;
+$quotations[1][&quot;backgroundColor&quot;] = &quot;#aa0000&quot;;
+$quotations[1][&quot;textColor&quot;] = &quot;white&quot;;
 
 // set up next quote with second dimensions on the array
 $quotations[2] = array();
-$quotations[2]["text"] = "Don't watch the clock; do what it does. Keep going.";
-$quotations[2]["attribute"] = "Sam Levenson";
-$quotations[2]["backgroundColor"] = "#88cc88";
-$quotations[2]["textColor"] = "#003300";
+$quotations[2][&quot;text&quot;] = &quot;Design is the intermediary between information and understanding.&quot;;
+$quotations[2][&quot;attribute&quot;] = &quot;Hans Hofmann&quot;;
+$quotations[2][&quot;backgroundColor&quot;] = &quot;#88cc88&quot;;
+$quotations[2][&quot;textColor&quot;] = &quot;#003300&quot;;
 
 // set up next quote with second dimensions on the array
 $quotations[3] = array();
-$quotations[3]["text"] = "The future belongs to those who believe in the beauty of their dreams.";
-$quotations[3]["attribute"] = "Eleanor Roosevelt";
-$quotations[3]["backgroundColor"] = "#bbb";
-$quotations[3]["textColor"] = "#555";
+$quotations[3][&quot;text&quot;] = &quot;The value of art is in the observer. When you find out what you like, you’re really finding out about yourself.&quot;;
+$quotations[3][&quot;attribute&quot;] = &quot;Agnes Martin&quot;;
+$quotations[3][&quot;backgroundColor&quot;] = &quot;#bbb&quot;;
+$quotations[3][&quot;textColor&quot;] = &quot;#555&quot;;
 
 // set up next quote with second dimensions on the array
 $quotations[4] = array();
-$quotations[4]["text"] = "Believe you can and you're halfway there.";
-$quotations[4]["attribute"] = "Theodore Roosevelt";
-$quotations[4]["backgroundColor"] = "#aa00aa";
-$quotations[4]["textColor"] = "#eee";
+$quotations[4][&quot;text&quot;] = &quot;It&#039;s through mistakes that you actually can grow. You have to get bad in order to get good.&quot;;
+$quotations[4][&quot;attribute&quot;] = &quot;Paula Scher&quot;;
+$quotations[4][&quot;backgroundColor&quot;] = &quot;#aa00aa&quot;;
+$quotations[4][&quot;textColor&quot;] = &quot;#eee&quot;;
 
 
-// only output a quote if the correct key is passed in the URL 
-// (see $secretKey at beginning of file)
-if ( isset( $_GET[&quot;key&quot;] ) ) { // check if array key is set
-	if ($_GET[&quot;key&quot;] == $secretKey) {
+// look for a number passed in the URL and, if present, convert it to an integer value
+// NOTE: code updated from demo video to address error handling differences among servers
+if ( isset( $_GET[&quot;quoteNumber&quot;] ) ) $passedNumber = intval( $_GET[&quot;quoteNumber&quot;] ); // try to convert submitted value to integer
+else $passedNumber = null; // no number passed
 
-		// get a random number between 0 and one less than the length of the $quotations array 
-		$quoteNumber = rand(0, ( count($quotations) - 1) );
-
-		// output that randomly selected quotation sub-array as JSON
-		echo json_encode( $quotations[$quoteNumber] );
-
-	}
+// if the passed number is 0 or greater, but less than the total count of the $quotations array, use the passed number
+// otherwise select a random number
+if ( ($passedNumber != null) &amp;&amp; ($passedNumber &gt;= 0) &amp;&amp; ($passedNumber &lt; count($quotations) ) ) {
+	$quoteNumber = $passedNumber; // used passed number
+} else {
+	$quoteNumber = rand(0, ( count($quotations) - 1) ); // random number from 0 to one less than the array length
 }
-?&gt;
 
 
 
 
+/* 
 
+now let&#039;s output the page&#039;s HTML!
 
+note that PHP code is being echo&#039;d in all of these:
+- &lt;title&gt; tag
+- CSS properties in the &lt;style&gt; block
+- HTML tags
+- HTML comments
 
-</pre>
+*/
+
+?&gt;&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	
+	&lt;!-- meta tags and title --&gt;
+	&lt;meta charset=&quot;UTF-8&quot;&gt;
+	&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+	&lt;title&gt;Quote by &lt;?= $quotations[$quoteNumber][&quot;attribute&quot;] ?&gt;&lt;/title&gt;
+
+	&lt;!-- CSS --&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; media=&quot;all&quot;&gt;
+	&lt;style&gt;
+
+		/* CSS customized by PHP, overriding the baseline loaded in the external file */
+
+		body {
+			background-color: &lt;?= $quotations[$quoteNumber][&quot;backgroundColor&quot;] ?&gt;;
+		}
+
+		h1, p {
+			color: &lt;?= $quotations[$quoteNumber][&quot;textColor&quot;] ?&gt;;
+		}
+
+	&lt;/style&gt;
+
+	&lt;!-- JavaScript --&gt;
+	&lt;script src=&quot;scripts.js&quot; defer&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+	&lt;h1&gt;&lt;?= $quotations[$quoteNumber][&quot;text&quot;] ?&gt;&lt;/h1&gt;
+	&lt;p&gt;— &lt;?= $quotations[$quoteNumber][&quot;attribute&quot;] ?&gt;&lt;/p&gt;
+	&lt;p id=&quot;reloader&quot;&gt;(get new quote)&lt;/p&gt;
+
+	
+	&lt;!-- some comments -- because PHP can output anywhere in HTML
+
+		 passed number, if any: &lt;?= $passedNumber; ?&gt; 
+		 output quote number: &lt;?= $quoteNumber; ?&gt; 
+		 output quote text: &lt;?= $quotations[$quoteNumber][&quot;text&quot;]; ?&gt; 
+		 output quote attribute: &lt;?= $quotations[$quoteNumber][&quot;attribute&quot;]; ?&gt; 
+		 output background color: &lt;?= $quotations[$quoteNumber][&quot;backgroundColor&quot;]; ?&gt; 
+		 output text color: &lt;?= $quotations[$quoteNumber][&quot;textColor&quot;]; ?&gt; 
+
+	--&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+        </pre>
 	</div>
 	<div id="loadingOverlay">
 		<div id="outerLoading">
