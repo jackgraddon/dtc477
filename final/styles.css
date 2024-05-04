@@ -210,17 +210,15 @@ section#game {
 }
 
 div.board {
-    width: calc(100vw - 2rem);
+    width: calc(100vh - 2rem);
+    height: calc(100vw - 5rem);
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 5rem);
 
     display: grid;
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: repeat(7, 1fr);
     gap: 1rem;
-}
-
-div.board div.row {
-    display: grid;
-    gap: 0.5rem;
 }
 
 /* Game Cell */
