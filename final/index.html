@@ -10,7 +10,7 @@
     <!-- Script -->
     <script src="./script.js" defer></script>
 </head>
-<body>
+<body data-theme="dark">
     <main class="content">
         <section id="menu">
             <h1>Hello!</h1>
@@ -43,65 +43,84 @@
             </form>
             <a class="button" id="start">Let's go <i class="bi bi-arrow-right-circle"></i></a>
         </section>
-        <section class="hidden" id="game">
-            <h1>Hello</h1>
+        <section id="game" data-turn="1">
+            <h1>It's <span id="playersTurn"></span>'s turn!</h1>
             <div class="board">
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <!-- Row -->
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
+                    <div class="cell" data-selected="none"></div>
                 </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-                <div class="row">
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                    <div class="cell"></div>
-                </div>
-            </div>
         </section>
     </main>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        gsap.set('#game', { y: '100%', display: 'none', opacity: 0 })
+        // Animate the menu slidng out when the game starts
+        document.getElementById('start').addEventListener('click', () => {
+            gsap.to('#menu', 
+            { 
+                y: '-100%', 
+                opacity: 0, 
+                display: 'none', 
+                duration: 0.5, 
+                ease: 'power2.inOut' 
+            });
+            gsap.to('#game',
+            { 
+                y: 0, 
+                display: 'flex', 
+                opacity: 1,
+                duration: 0.5, 
+                ease: 'power2.inOut' 
+            });
+        });
+    </script>
 </body>
 </html>

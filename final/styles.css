@@ -29,13 +29,16 @@ p, h1, h2, h3, h4, h5, h6 {
 /* Variable Declarations */
 :root {
     /* Colors */
-    --color--background: #D7D7D6;
-    --color--text: #333;
+    --color--background: #484847;
+    --color--text: #fff;
     --color--primary: #7DAF9C;
     --color--secondary: #F2D0A4;
 
     --color--player-1: #FB4B54;
     --color--player-2: #26437E;
+    
+    --color--player-1-hover: #ffa8ac;
+    --color--player-2-hover: #5c7bb9;
 }
 
 /* Light Colors */
@@ -196,18 +199,28 @@ a.button:hover {
 
 
 /* Game Board */
-div.board {
-    width: 100vw;
-    padding: 1rem;
-
+section#game {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    position: relative;
+}
+
+div.board {
+    width: calc(100vw - 2rem);
+
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     gap: 1rem;
 }
 
 div.board div.row {
-    display: flex;
-    gap: 1rem;
+    display: grid;
+    gap: 0.5rem;
 }
 
 /* Game Cell */
@@ -222,4 +235,21 @@ div.cell {
 
     aspect-ratio: 1;
     cursor: pointer;
+
+    transition: 300ms ease-in-out background-color;
+}
+
+[data-turn='1'] div.cell:hover {
+    background-color: var(--color--player-1-hover);
+}
+[data-turn='2'] div.cell:hover {
+    background-color: var(--color--player-2-hover);
+}
+
+
+div.cell[data-selected='player1'] {
+    background-color: var(--color--player-1);
+}
+div.cell[data-selected='player2'] {
+    background-color: var(--color--player-2);
 }
