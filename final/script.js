@@ -74,7 +74,7 @@ cells.forEach(cell => {
         // Check for a win condition
         if (checkWinCondition()) {
           won = currentPlayer;
-          document.querySelector('#playersTurn').textContent = 'Player ' + currentPlayer + ' wins!';
+          document.querySelector('#toptext').textContent = 'Player ' + currentPlayer + ' wins! Refresh to play again.';
         }
 
         // Switch the current player
